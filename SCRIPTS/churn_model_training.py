@@ -76,7 +76,7 @@ plt.xlabel("Predicted")
 plt.ylabel("Actual")
 plt.title("Confusion Matrix")
 plt.tight_layout()
-plt.savefig("visuals/confusion_matrix.png")  # 💾 Matrix'i kaydet
+plt.savefig("visuals/confusion_matrix.png")
 plt.show()
 
 # Classification Report
