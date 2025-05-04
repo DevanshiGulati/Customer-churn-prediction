@@ -43,3 +43,42 @@ plt.savefig("visuals/confusion_matrix1.png")  # Save plot
 plt.show()                                    # Show plot in a window
 
 print("✅ Outputs saved as 'classification_report.txt' and 'confusion_matrix1.png'")
+
+from sklearn.metrics import classification_report, confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Predict on test data
+y_pred = model.predict(X_test)
+
+# Classification Report
+print("Classification Report:")
+print(classification_report(y_test, y_pred))
+
+# Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+plt.figure(figsize=(6, 4))
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=['No Churn', 'Churn'], yticklabels=['No Churn', 'Churn'])
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.title("Confusion Matrix")
+plt.tight_layout()
+plt.show()
+from sklearn.metrics import classification_report, confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+plt.figure(figsize=(6, 4))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.title("Confusion Matrix")
+plt.tight_layout()
+plt.savefig("visuals/confusion_matrix.png")  # 💾 Matrix'i kaydet
+plt.show()
+
+# Classification Report
+with open("visuals/classification_report.txt", "w") as f:
+    f.write(classification_report(y_test, y_pred))
